@@ -1,0 +1,61 @@
+
+<div class="container">
+    <form [formGroup]="cakeForm" (submit)="cakeForm.valid && addcake()">  
+        <div class="form-group">
+          <label for="exampleInputEmail1">Name of Cake</label>
+          <input formControlName="name" class="form-control" aria-describedby="nameHelp" placeholder="Choclate cake" [(ngModel)]="cakedata.name">
+        </div>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Price</label>
+          <input formControlName="price" class="form-control" aria-describedby="weightHelp" placeholder="100" [(ngModel)]="cakedata.price">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Type of cake</label>
+          <select class="form-select" formControlName="type">
+              <option value="Birthday Cake">Birthday Cake</option>
+              <option value="Fruit Cake">Fruit Cake</option>
+              <option value="Muffin">Muffin</option>
+              <option value="Sponge Cake">Sponge Cake</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Weight</label>
+          <input formControlName="weight" class="form-control" aria-describedby="weightHelp" placeholder="100" [(ngModel)]="cakedata.weight">
+        </div>
+
+        <div class="form-group">
+          <label for="exampleInputEmail1">Ingredient</label>
+          <input formControlName="ingredient" class="form-control" aria-describedby="emailHelp" placeholder="Egg,Flour,Sugar" [(ngModel)]="cakedata.ingredient">
+        </div>
+        
+        <div class="form-group">
+          <label for="imageUrl">Upload a image</label>
+          <div class="d-flex">
+            <input  type="file" (change)="getFile($event)">
+            <button class="btn btn-outline-success" (click)="upload()">Upload</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+            <div>
+              <input id="male" type="radio" value="eggless" name="eggless" formControlName="eggless">
+                 <label for="male">Eggless</label>
+            </div>
+          
+            <div>
+              <input id="female" type="radio" value="egg" name="eggless" formControlName="eggless">
+                <label for="female">Egg</label>
+              </div>
+          </div>
+
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea formControlName="description" class="form-control" id="exampleFormControlTextarea1" rows="3" [(ngModel)]="cakedata.description"></textarea>
+          </div>
+
+          <button style="margin-top:1em" type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      
+</div>
