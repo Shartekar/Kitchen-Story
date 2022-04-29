@@ -38,7 +38,6 @@ export class DetailComponent implements OnInit {
   }
 
   addToCart(){
-  
     if(localStorage["token"]){
     this.isAdding=true
     var body :any={
@@ -49,16 +48,8 @@ export class DetailComponent implements OnInit {
         image:this.cakeData.image,
       }
     
-    let myHeaders=new HttpHeaders()
-    myHeaders=myHeaders.append("authtoken",localStorage["token"])
     var url="https://apifromashu.herokuapp.com/api/addcaketocart"
-    
-    this.isadding=true
-    var options={
-      headers:myHeaders
-    }
-    
-      this.service.addtoCart(url,body,options).subscribe({
+      this.service.cake_post(url,body).subscribe({
       next:(response:any)=>{
         console.log(response)
         this.isAdding=false

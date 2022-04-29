@@ -21,9 +21,9 @@ export class AddcakeComponent implements OnInit {
   constructor(private service: CakeService,private formbuilder:FormBuilder,private toaster:ToastrService) {
     this.cakeForm=this.formbuilder.group({
       name:["",[Validators.required ]],
-      price:["",[Validators.required]],
+      price:[0,[Validators.required]],
       type:["",[Validators.required]],
-      weight:["",[Validators.required]],
+      weight:[0,[Validators.required,Validators.max(5),Validators.min(0.5)]],
       ingredient:["",[Validators.required]],
       eggless:["",[Validators.required]],
       description:["",[Validators.required]]
@@ -35,9 +35,7 @@ export class AddcakeComponent implements OnInit {
 
   addcake(){
 
-    if(this.cakeForm.valid){
-    
-    // this.toaster.success("Add cake has been clicked")
+    if(this.cakeForm.valid){ 
     let body={
       name:this.cakeForm["value"].name,
       price:parseInt(this.cakeForm["value"].price),
@@ -45,7 +43,7 @@ export class AddcakeComponent implements OnInit {
       ingredients:this.cakeForm["value"].ingredient.split(','),
       image:this.imageSource,
       type:this.cakeForm["value"].type,
-      weight:parseInt(this.cakeForm["value"].weight),
+      weight:this.cakeForm["value"].weight,
       eggless:this.cakeForm["value"].eggless=="eggless"?true:false
     }
 
@@ -90,7 +88,6 @@ export class AddcakeComponent implements OnInit {
           console.log(response)
           this.imageSource=response.imageUrl
           this.toaster.success("Image has been succesfully loaded the image source is",response.imageUrl)
-          
         }
       },
       error:(error)=>{

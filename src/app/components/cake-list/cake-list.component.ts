@@ -18,9 +18,8 @@ export class CakeListComponent implements OnInit {
   //Initializa the service
   constructor(
     private service:CakeService,
-    private toastr:ToastrService,
     private https: HttpClient,
-    private loader:NgxUiLoaderService) 
+) 
     {
       
       var url='https://apifromashu.herokuapp.com/api/allcakes'

@@ -25,7 +25,13 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { DiscountPipe } from './discount.pipe';
 import { AddcakeComponent } from './components/addcake/addcake.component';
 import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
-import { ForgetPasswordComponent } from './components/forget-password/forget-password.component'
+import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
+import { PreviousOrdersComponent } from './components/previous-orders/previous-orders.component';
+import { PreviousCakesDetailsComponent } from './components/previous-cakes-details/previous-cakes-details.component'
+
+//Guard
+import { AuthGuard } from './auth.guard';
+import {UserGuard} from './user.guard';
 
 @NgModule({
   declarations: [
@@ -45,7 +51,9 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     PaymentComponent,
     DiscountPipe,
     AddcakeComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    PreviousOrdersComponent,
+    PreviousCakesDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +66,7 @@ import { ForgetPasswordComponent } from './components/forget-password/forget-pas
     ToastrModule.forRoot(),
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [AuthGuard,UserGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

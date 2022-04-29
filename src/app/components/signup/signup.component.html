@@ -26,25 +26,3 @@
                 <button (click)="signup()" type="submit" class="btn btn-primary">Submit</button>
         </form>
 </div>
-
- <!---------------------------------------------------------------------------------------------------------------------------------->
-
-
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Username</th>
-            <th scope="col">email</th> 
-            <th scope="col">Delete</th>
-        </tr>
-    </thead>
-    <tbody *ngFor="let user of users">
-            <tr>
-                <th scope="row">1</th>
-                <td>{{user.username}}</td>
-                <td>{{user.email}}</td>
-                <td><button (click)="deleteUser(user.email)" type="button" class="btn btn-danger">Delete</button></td>
-            </tr>
-    </tbody>
-</table>

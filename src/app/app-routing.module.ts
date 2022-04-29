@@ -10,14 +10,21 @@ import {CheckoutComponent} from "./components/checkout/checkout.component";
 import { AddressComponent } from './components/address/address.component';
 import { PaymentComponent } from './components/payment/payment.component';
 import { AddcakeComponent } from './components/addcake/addcake.component';
+import {PreviousOrdersComponent} from './components/previous-orders/previous-orders.component'
+import { PreviousCakesDetailsComponent } from './components/previous-cakes-details/previous-cakes-details.component';
+import { AuthGuard } from './auth.guard';
+import {UserGuard} from './user.guard';
+
 
 const routes: Routes = [
- {path:"login",component:LoginComponent },
+ {path:"login",component:LoginComponent,canActivate:[AuthGuard] },
  {path:"",component:HomeComponent},
  {path:"signup",component:SignupComponent},
  {path:"search",component:SearchComponent},
  {path:"detail/:cakeid",component:DetailComponent},
  {path:"addcake",component:AddcakeComponent},
+ {path:"previous-orders",component:PreviousOrdersComponent,canActivate:[UserGuard]},
+ {path:"previous-cakes/:id",component:PreviousCakesDetailsComponent,canActivate:[UserGuard]},
 
  //Nested Components
  {path:"checkout",component:CheckoutComponent,
@@ -27,7 +34,7 @@ const routes: Routes = [
  {path:"payment",component:PaymentComponent}
  ]},
 
- {path:"cart",component:CartComponent}
+ {path:"cart",component:CartComponent,canActivate:[UserGuard]}
 
 
 ];
@@ -36,4 +43,6 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 export class AppRoutingModule { }

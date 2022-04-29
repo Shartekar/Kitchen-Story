@@ -18,17 +18,17 @@
             <td><img style="height: 60px; width:60px" [src]="item.image" alt=""></td>
             <td>{{item.price | currency:"INR"}}</td>
             <td><button (click)="inc_dec('+',i)" class="btn btn-light">+</button>{{item.quantity}}<button class="btn btn-light"  (click)="inc_dec('-',i)">-</button></td>
-            <td><button (click)="removefromcart(item.cakeid,i)" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
+            <td><button (click)="removefromcart(i)" class="btn btn-danger"><i class="bi bi-trash"></i></button></td>
           </tr>
         </tbody>
       </table>
       <div class="d-flex flex-wrap justify-content-between " style="height: 50px;">
-          <h3>{{totalAmount | currency:"INR"}}</h3>
+          <h3>Total Billing Amount: {{totalAmount | currency:"INR"}}</h3>
           <button type="button" class="btn btn-warning" routerLink="/checkout">Checkout</button>
     </div>
 </div>
 
-<div *ngIf="cartItems.length==0" style="text-align:center;">
+<div *ngIf="!cartItems.length" style="text-align:center;">
     <h2>Your Cart is empty</h2>
 </div>
 

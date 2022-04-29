@@ -5,6 +5,7 @@ import { ToastrService } from 'ngx-toastr';
 import {Router} from "@angular/router";
 
 
+
 @Component({
   selector: 'app-cake',
   templateUrl: './cake.component.html',
@@ -12,13 +13,13 @@ import {Router} from "@angular/router";
 })
 export class CakeComponent implements OnInit {
 
+  signupForm:any
+
   @Input() cakedata!:Cake
-  constructor(private service:CakeService,private toaster: ToastrService,private router:Router) { 
-     
-  }
+  constructor(private service:CakeService,private toaster: ToastrService,private router:Router) { }
+  
 
   detail(){
-    // this.toaster.success("Port no",this.service.port.toString())
     console.log("Testing")
     this.router.navigate(
       ["detail/",this.cakedata.cakeid] )

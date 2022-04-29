@@ -20,7 +20,8 @@ export class PaymentComponent implements OnInit {
 
   constructor(private service:CakeService,private router:Router,private toaster:ToastrService) {
 
-    this.service.getCart().subscribe({
+    let url ="https://apifromashu.herokuapp.com/api/cakecart"
+    this.service.cake_post(url,{}).subscribe({
       next:(response:any)=>{
         this.cartItems=response.data
         console.log(this.cartItems)
@@ -39,6 +40,7 @@ export class PaymentComponent implements OnInit {
    }
 
   order(){
+    let url="https://apifromashu.herokuapp.com/api/addcakeorder"
     console.log(this.cartItems)
     let body={
       cakes:this.cartItems,
@@ -50,7 +52,7 @@ export class PaymentComponent implements OnInit {
       phone:this.userDetails.phone_no
     }
     console.log(body)
-    this.service.addCakeOrder(body).subscribe({
+    this.service.cake_post(url,body).subscribe({
       next:(response:any) => {
         console.log("On success",response)
         

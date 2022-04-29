@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
                 }
               })
               console.log(localStorage["token"])
-              this.router.navigate(["/"])
+              this.router.navigate([""])
           }
           else{
             this.responseError="Invalid Login"

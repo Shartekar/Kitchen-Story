@@ -22,8 +22,6 @@ export class SignupComponent implements OnInit {
         name:["",[Validators.required]],
         password:["",[Validators.required]],
         pincode:["",[Validators.required,Validators.maxLength(6),Validators.minLength(6)]],
-        
-
       })
 
   }

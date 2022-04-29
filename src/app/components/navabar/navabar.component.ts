@@ -79,5 +79,16 @@ export class NavabarComponent {
 
   }
   
+  previousorder(){
+    let url="https://apifromashu.herokuapp.com/api/cakeorders"
+    this.service.cake_post(url,{}).subscribe({
+      next:(response:any)=>{
+        console.log("response",response)
+      },
+      error:(error)=>{
+        console.log(error)
+      }
+    })
+  }
 
 }
